@@ -1,0 +1,108 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header y navegación */
+/* 1- Cual seria la diferencia entre nav container y header?  */
+
+header {
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* logo a la izq, links a la der */
+    align-items: center;            /* centrado vertical */
+    gap: 20px;
+}
+
+.nav-container img {
+    height: 80px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex; /* 2- aca sticky tiene otro signigicado? */
+    gap: 40px;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #FF9800;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #FF9800;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Tamano del logo segun ? */
+
+@media (max-width: 768px) {
+    .nav-container img {
+        height: 60px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container img {
+        height: 50px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    nav {
+        padding: 0 10px;
+    }
+}
