@@ -10,9 +10,30 @@ body {
     line-height: 1.6;
 }
 
-/* Header y navegación */
-/* 1- Cual seria la diferencia entre nav container y header?  */
+/* Estilos comunes para los titulos títulos  */
+.section-title {
+    font-size: 2rem;
+    font-weight: 200;
+    color: #333;
+    margin-bottom: 3rem;
+    position: relative;
+    text-align: center;
+}
 
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #F4C430;
+}
+
+/* 1- Cual seria la diferencia entre nav container y header? El nombre, los dos son divs*/
+
+/*  Menu de barra */
 header {
     background-color: white;
     padding: 10px 0;
@@ -43,10 +64,42 @@ nav {
 }
 
 .nav-links {
-    display: flex; /* 2- aca sticky tiene otro signigicado? */
+    display: flex;
     gap: 40px;
-    justify-content: center;
+    justify-content: center; /*justify content solo es para los display flex*/
     padding-bottom: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #F4C430;
+}
+
+.social-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #F4C430;
+    transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a {
@@ -58,7 +111,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #FF9800;
+    color: #F4C430;
 }
 
 .nav-links a::after {
@@ -68,15 +121,20 @@ nav {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: #FF9800;
+    background-color: #F4C430;
     transition: width 0.3s ease;
 }
+
+/* 
+interesante: ::marker 
+*/
 
 .nav-links a:hover::after {
     width: 100%;
 }
 
-/* Tamano del logo segun ? */
+/* px absoluto, lo uso para respetar proporciones
+Los relativos serian vw o porcentaje */
 
 @media (max-width: 768px) {
     .nav-container img {
@@ -87,8 +145,15 @@ nav {
         gap: 20px;
         flex-wrap: wrap;
     }
+    .social-links {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
     
     .nav-links a {
+        font-size: 0.9rem;
+    }
+    .social-links a {
         font-size: 0.9rem;
     }
 }
@@ -101,8 +166,595 @@ nav {
     .nav-links {
         gap: 15px;
     }
+    .social-links {
+        gap: 12px;
+    }
     
     nav {
         padding: 0 10px;
+    }
+
+    /* Grid de una columna en móviles */
+    .quienessomos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* los divs son bloques */
+
+/* flexbox lo voy a usar para las columnas de los programas, o la de organizacion etc
+wrap lo voy a usar para que en pantallas chicas se acomoden en vez de achicarse mucho
+solo trabaja sobre una direccion x o y 
+Para practicar flexbox: https://flexboxfroggy.com/#es 
+*/
+
+/* Grid trabaja sobre el eje x e y 
+Pagina que me arma el codigo: https://grid.layoutit.com/
+ */
+
+/* Seccion hero */
+.hero-section {
+    background-image: url('../imagenes/portada.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinea a la izquierda */
+    text-align: left; /* Alinea el texto a la izquierda */
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin-left: 10%;
+    padding: 2rem;
+}
+.hero-title {
+    font-size: clamp(3.5rem, 4vw, 4.5rem);
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    color: white;
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+.whatsapp-button {
+    display: inline-block;
+    background-color: #F4C430;
+    color: #333;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 90vh;
+        margin-top: -60px;
+    }
+    
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .whatsapp-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+#programas-destacados {
+    margin-top: 3rem;
+    margin-bottom: 0rem;
+}
+/* Sección programas destacados - SIMPLIFICADO */
+.programas-destacados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.programa-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.programa-card:hover {
+    transform: translateY(-5px);
+}
+
+.programa-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.programa-card h3 {
+    padding: 1.5rem;
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* RESPONSIVE - Programas */
+@media (max-width: 768px) {
+    .programas-destacados {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 3rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .programas-destacados {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+}
+
+/* Sección de testimonios - SIMPLIFICADO */
+.testimonios-section {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.testimonios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.testimonio-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.testimonio-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonio-content p {
+    font-style: italic;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.testimonio-author {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.author-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.author-info span {
+    color: #F4C430;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* RESPONSIVE - Testimonios */
+@media (max-width: 768px) {
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .testimonio-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonios-section {
+        padding: 3rem 0;
+    }
+    
+    .testimonios-container {
+        padding: 0 1rem;
+    }
+}
+/* Sección Quiénes somos - SIMPLIFICADO */
+.quienessomos-section {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.quienessomos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.quienessomos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.img-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.quienessomos-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.quienessomos-texto {
+    padding: 1rem;
+}
+
+.quienessomos-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* RESPONSIVE - Quiénes somos */
+@media (max-width: 768px) {
+    .quienessomos-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .img-container {
+        height: 250px;
+    }
+    
+    .quienessomos-section {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .quienessomos-container {
+        padding: 0 1rem;
+    }
+    
+    .img-container {
+        height: 200px;
+    }
+}
+
+/* Sección Todos nuestros programas - 3 CARDS DIFERENTES */
+.todos-programas-section {
+    background: #ffffff;
+    padding: 5rem 0;
+}
+
+.todos-programas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.programas-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr; /* dos columnas reales: principal y lateral */
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem auto 0;
+    height: 600px;
+    max-width: 1200px;
+    /* centrado mediante margin auto y max-width para alinear con otras secciones */
+}
+
+.programa-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.programa-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Card PRINCIPAL - Más grande, ocupa 2 filas */
+.principal {
+    grid-row: 1 / 3;
+    grid-column: 1;
+}
+
+/* Card SECUNDARIO - Mediana */
+.secundario {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+/* Card TERCIARIO - Pequeña */
+.terciario {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.programa-imagen {
+    width: 100%;
+    overflow: hidden;
+}
+
+.principal .programa-imagen {
+    height: 90%;
+}
+
+.secundario .programa-imagen,
+.terciario .programa-imagen {
+    height: 80%;
+}
+
+.programa-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.programa-contenido {
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.principal .programa-contenido {
+    padding: 2rem;
+}
+
+.secundario .programa-contenido,
+.terciario .programa-contenido {
+    padding: 1.25rem;
+}
+
+.programa-contenido h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.principal .programa-contenido h3 {
+    font-size: 1.5rem;
+}
+
+.secundario .programa-contenido h3,
+.terciario .programa-contenido h3 {
+    font-size: 1.1rem;
+}
+
+.programa-contenido p {
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.principal .programa-contenido p {
+    font-size: 1rem;
+}
+
+.secundario .programa-contenido p,
+.terciario .programa-contenido p {
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE - 3 cards diferentes */
+@media (max-width: 1024px) {
+    .programas-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        height: auto;
+        gap: 1.5rem;
+    }
+    
+    .principal,
+    .secundario,
+    .terciario {
+        grid-row: auto;
+        grid-column: auto;
+    }
+    
+    .principal .programa-imagen,
+    .secundario .programa-imagen,
+    .terciario .programa-imagen {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .todos-programas-section {
+        padding: 4rem 0;
+    }
+    
+    .programa-contenido {
+        padding: 1.25rem;
+    }
+    
+    .principal .programa-contenido {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .todos-programas-container {
+        padding: 0 1rem;
+    }
+    
+    .programa-contenido {
+        padding: 1rem;
+    }
+    
+    .principal .programa-contenido h3 {
+        font-size: 1.3rem;
+    }
+    
+    .secundario .programa-contenido h3,
+    .terciario .programa-contenido h3 {
+        font-size: 1rem;
+    }
+}
+
+
+/* algo que me gustaria hacer es que las imagenes de todos los programas sean un poco mas grandes y que terminen quedando con el mismo margen que las otras */ 
+
+/* Footer */
+.site-footer {
+    background: #333;
+    border-top: none;
+    padding: 1.5rem 0  2rem 0; /* top right bottom left */
+    color: #f2f2f2;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    height: 48px;
+    width: auto;
+}
+
+.footer-tagline {
+    font-size: 0.95rem;
+    color: #f2f2f2;
+    opacity: 0.9;
+}
+
+.footer-right a {
+    color: #f2f2f2;
+}
+
+.footer-right a:hover::after {
+    background-color: #F4C430; /* match nav underline */
+}
+
+/* Simple icon styling */
+.social-icon {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    display: block;
+}
+
+.footer-right a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-label {
+    font-size: 0.95rem;
+}
+
+.footer-bottom {
+    margin-top: 1rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.9rem; /* misma familia que body, peso normal */
+    font-weight: 400;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-separator {
+    margin: 0 0.5rem;
+    color: #bbb;
+}
+
+/* Responsive - Footer */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .footer-right {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
     }
 }
