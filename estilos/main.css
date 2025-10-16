@@ -758,3 +758,150 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
         flex-wrap: wrap;
     }
 }
+
+/* Aca no se si me convendria hacerlo en una nueva css, porque hay cosas que uso de main.css */
+
+/*Programa Summer UK*/
+
+/* No uso section-title porque lo quiero en blanco al texto  */
+
+.grid-incluye {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background-color: #333;
+    padding: 3rem 8rem 3rem 8rem; /* top right bottom left */
+    margin: 0 auto;
+}
+
+.texto-incluye h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.texto-incluye p {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+/* Cuadro de detalles */
+.cuadro-incluye {
+    background-color: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mini icons - estilo discreto como en la imagen */
+.incluye-item-mini {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.incluye-item-mini:last-child {
+    border-bottom: none;
+}
+
+.icon-mini {
+    width: 28px;
+    height: 28px;
+    stroke: #F4C430;
+    fill: none;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+.incluye-item-mini span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+#fotosescuela
+{
+    padding-top: 2rem;
+}
+#fotosescuela .img
+{
+    object-fit: cover; /*No estoy logrando que ocupen todo el box las imagenes*/
+}
+
+/* Responsive: una sola columna en pantallas chicas */
+@media (max-width: 900px) {
+    .grid-incluye {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    
+    .texto-incluye h2 {
+        text-align: center;
+    }
+    
+    .texto-incluye p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-incluye {
+        padding: 1.5rem 1rem;
+    }
+    
+    .cuadro-incluye {
+        padding: 1.5rem;
+    }
+}
+
+/* Sección académica */
+#academico {
+    background-color: white;
+}
+
+#academico .texto-incluye h2 {
+    color: #333;
+}
+
+#academico .texto-incluye p {
+    color: #666;
+}
+
+/* Imagen de la sección académica - coincide con secundarias/terciarias */
+.imagen-incluye {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-left: 1rem; /* Mismo espaciado que las imágenes secundarias/terciarias */
+}
+
+.imagen-incluye img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive para imagen académica */
+@media (max-width: 900px) {
+    .imagen-incluye {
+        height: 250px;
+        margin-left: 0; /* Sin margen en móviles */
+    }
+}
+
+@media (max-width: 600px) {
+    .imagen-incluye {
+        height: 200px;
+        margin-left: 0; /* Sin margen en móviles */
+    }
+}
