@@ -505,6 +505,8 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    display: flex;           /* estructura en columna */
+    flex-direction: column;
 }
 
 .programa-item:hover {
@@ -535,13 +537,11 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     overflow: hidden;
 }
 
-.principal .programa-imagen {
-    height: 90%;
-}
-
+.principal .programa-imagen,
 .secundario .programa-imagen,
 .terciario .programa-imagen {
-    height: 80%;
+    height: auto;            /* anula porcentajes que empujaban el texto */
+    flex: 1 1 auto;          /* que la imagen ocupe el espacio disponible */
 }
 
 .programa-imagen img {
@@ -552,7 +552,7 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
 
 .programa-contenido {
     padding: 1.5rem;
-    text-align: left;
+    text-align: center;
 }
 
 .principal .programa-contenido {
@@ -641,14 +641,41 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
         padding: 1rem;
     }
     
-    .principal .programa-contenido h3 {
-        font-size: 1.3rem;
+    /* Mantener tipografía consistente también en móviles */
+}
+
+/* Unificar tipografía y centrar verticalmente los títulos de las cards */
+.programa-contenido {
+    display: flex;
+    align-items: center;      /* centro vertical */
+    justify-content: center;  /* centro horizontal */
+    height: 120px;            /* altura fija para centrar de verdad */
+    padding: 0 1.5rem;
+}
+
+/* Mismo tamaño de fuente para todas las variantes, como en el resto del sitio */
+.programa-contenido h3 {
+    font-size: 1.2rem; /* igual que .programa-card h3 */
+    line-height: 1.3;
+    font-weight: 600; 
+    text-transform: none;
+    margin: 0;
+}
+
+/* Asegurar consistencia en móviles sobreescribiendo reglas anteriores */
+@media (max-width: 480px) {
+    .programa-contenido h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
     }
-    
-    .secundario .programa-contenido h3,
-    .terciario .programa-contenido h3 {
-        font-size: 1rem;
-    }
+}
+
+/* Forzar mismo tamaño de fuente en todas las variantes de card */
+.principal .programa-contenido h3,
+.secundario .programa-contenido h3,
+.terciario .programa-contenido h3 {
+    font-size: 1.2rem; /* override de reglas anteriores más específicas */
+    font-weight: 600;
 }
 
 
@@ -830,9 +857,16 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
 {
     padding-top: 2rem;
 }
-#fotosescuela .img
+#fotosescuela .programa-imagen {
+    height: 100%; /* En la sección de la escuela, que la imagen ocupe todo el card */
+}
+
+#fotosescuela img
 {
+    width: 100%;
+    height: 100%;
     object-fit: cover; /*No estoy logrando que ocupen todo el box las imagenes*/
+    display: block; /* Elimina el espacio en blanco debajo de la imagen */
 }
 
 /* Responsive: una sola columna en pantallas chicas */
@@ -875,7 +909,202 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     color: #666;
 }
 
-/* Imagen de la sección académica - coincide con secundarias/terciarias */
+/* Información de próxima salida superpuesta en hero */
+.proxima-salida-hero {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.salida-card-hero {
+    background-color: #F4C430;
+    color: #333;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 15px rgba(244, 196, 48, 0.3);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.salida-card-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 196, 48, 0.4);
+}
+
+.salida-icon-hero {
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.salida-icon-hero svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2;
+}
+
+.salida-texto-hero h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem 0;
+    color: #333;
+    line-height: 1.2;
+}
+
+.salida-texto-hero p {
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Responsive para próxima salida en hero */
+@media (max-width: 768px) {
+    .salida-card-hero {
+        padding: 0.7rem 1.5rem;
+        gap: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .salida-icon-hero {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .salida-icon-hero svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .salida-texto-hero h3 {
+        font-size: 0.9rem;
+    }
+    
+    .salida-texto-hero p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Sección de itinerario simple */
+.itinerario-simple {
+    background-color: white;
+    padding: 4rem 0;
+}
+
+.itinerario-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.itinerario-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.itinerario-imagen {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 250px;
+}
+
+.itinerario-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.itinerario-info h3 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.itinerario-info h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #F4C430;
+}
+
+.itinerario-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.itinerario-info li {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.itinerario-info li::before {
+    content: "✓";
+    color: #F4C430;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive para itinerario simple */
+@media (max-width: 768px) {
+    .itinerario-container {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+    
+    .itinerario-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .itinerario-imagen {
+        height: 200px;
+    }
+    
+    .itinerario-simple {
+        padding: 3rem 0;
+    }
+}
+#escuela-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Elimina el espacio en blanco debajo de la imagen */
+}
+/* Imagen de la sección académica */
 .imagen-incluye {
     width: 100%;
     height: 300px;

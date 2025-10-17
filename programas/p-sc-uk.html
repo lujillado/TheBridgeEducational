@@ -28,9 +28,24 @@
     <section class="hero-section">
         <div class="hero-content">
             <div class="hero-title">Summer Camp UK</div> <!-- Hago la imagen a la mitad y pongo fecha de salida/ duracion del programa?-->
+            
+            <!-- Información de próxima salida superpuesta -->
+            <div class="proxima-salida-hero">
+                <div class="salida-card-hero">
+                    <div class="salida-icon-hero">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <div class="salida-texto-hero">
+                        <h3>Próxima salida</h3>
+                        <p>28 Julio - 15 Agosto</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
 
 <!-- Sección de que incluye el programa -->
     <div class="grid-incluye">
@@ -40,15 +55,17 @@
         </div>
         <div class="cuadro-incluye">
             <div class="incluye-item-mini">
-                <svg class="icon-mini" viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="M5 25h13l6-11 6 2-6 9h12l5 3-5 3H24l6 9-6 2-6-11H5z"/>
-                    <path d="M18 25l-7-3"/>
-                    <path d="M18 25l-7 3"/>
+                <svg class="icon-mini" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M2 12l20-7-6 18-3-7-7-3z"></path>
+                    <path d="M22 5l-9 9"></path>
                 </svg>
                 <span>Pasaje aéreo</span>
             </div>
             <div class="incluye-item-mini">
-                <svg class="icon-mini" viewBox="0 0 16 16" aria-hidden="true">
+                <svg class="icon-mini" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 8l-4 4 4 4"></path>
+                    <path d="M17 16l4-4-4-4"></path>
+                    <path d="M3 12h18"></path>
                 </svg>
                 <span>Traslados</span>
             </div>
@@ -83,22 +100,56 @@
             </div>
         </div>
     </div>
+        <!-- Sección de itinerario del programa -->
+    <div class="itinerario-simple">
+        <div class="itinerario-container">
+            <!-- Salisbury -->
+            <div class="itinerario-item">
+                <div class="itinerario-imagen">
+                    <img src="../imagenes/programas-destacados/uk.jpg" alt="Salisbury">
+                </div>
+                <div class="itinerario-info">
+                    <h3>2 semanas en Salisbury</h3>
+                    <ul>
+                        <li>Estadía en residencia con pensión completa, actividades sociales y recreativas</li>
+                        <li>Jornada en Escuela Secundaria Inglesa</li>
+                        <li>Cream tea</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Londres -->
+            <div class="itinerario-item">
+                <div class="itinerario-imagen">
+                    <img src="../imagenes/UK/londres.jpg" alt="Londres">
+                </div>
+                <div class="itinerario-info">
+                    <h3>4 noches en Londres</h3>
+                    <ul>
+                        <li>Todas las comidas</li>
+                        <li>Tarjeta de transporte</li>
+                        <li>Atracciones: London Eye + River Cruise</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Imagenes de la escuela -->
     <div class="imagenes-escuela">
         <div class="irregular-container" id="fotosescuela">
         <h2 class="section-title">La escuela</h2>
         <div class="programas-grid">
-            <div class="programa-item principal">
+            <div class="programa-item principal" id="escuela-principal">
                 <div class="programa-imagen">
                     <img src="../imagenes/programas-destacados/usa.jpeg" alt="Cursos de idiomas">
                 </div>
             </div>   
-            <div class="programa-item secundario">
+            <div class="programa-item secundario" id="escuela-secundario">
                 <div class="programa-imagen">
                     <img src="../imagenes/programas-destacados/uk.jpg" alt="Año académico">
                 </div>
             </div>
-            <div class="programa-item terciario">
+            <div class="programa-item terciario" id="escuela-terciario">
                 <div class="programa-imagen">
                     <img src="../imagenes/programas-destacados/dukes.jpg" alt="Secundaria">
                 </div>
@@ -113,7 +164,7 @@
             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus pretium libero, eget consectetur leo maximus in. Nunc in diam a ex lacinia maximus. Praesent consequat quam ut eros varius, quis vestibulum metus finibus. Aenean gravida erat diam, sit amet vestibulum est scelerisque non. Integer vehicula sapien ut lectus lacinia, nec auctor enim rutrum. Nam ut tempus urna. Maecenas tempor id est sit amet tincidunt. Cras vulputate magna non vulputate vestibulum. Suspendisse et nisi ac mi porttitor imperdiet at et lacus. Sed mauris felis, condimentum sed massa at, hendrerit auctor ipsum. Sed sit amet nibh libero. Sed leo nisl, bibendum eget est in, consectetur blandit sapien. Praesent ac elementum erat.</p>
         </div>
         <div class="imagen-incluye">
-            <img src="../imagenes/programas-destacados/uk.jpg" alt="Cursos de inglés">
+            <img src="../imagenes/UK/clases.jpeg" alt="Cursos de inglés">
         </div>
     </div>
 
