@@ -1134,3 +1134,78 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
         margin-left: 0; /* Sin margen en móviles */
     }
 }
+
+/* Galería vertical (4 imágenes) */
+.galeria-vertical-section {
+    background: #ffffff;
+    padding: 4rem 0;
+}
+
+.galeria-vertical-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.galeria-vertical-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.galeria-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.galeria-img {
+    height: 320px; /* vertical */
+    overflow: hidden;
+}
+
+.galeria-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.galeria-content {
+    padding: 1rem 1rem 1.25rem 1rem;
+    text-align: center;
+}
+
+.galeria-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.galeria-content p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .galeria-vertical-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria-vertical-container {
+        padding: 0 1rem;
+    }
+    .galeria-vertical-grid {
+        grid-template-columns: 1fr;
+    }
+    .galeria-img { height: 260px; }
+}
