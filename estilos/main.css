@@ -1551,3 +1551,8 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     }
     .galeria-img { height: 260px; }
 }
+
+/* pagina adultos*/
+#fotosadultos {
+    padding-bottom: 3rem;
+}
