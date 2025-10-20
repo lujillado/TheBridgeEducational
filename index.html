@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Bridge Educational</title> <!--titulo solapa de inicio -->
+    <link rel="icon" type="image/png" href="imagenes/croppedlogo.png">
     <link rel="stylesheet" href="estilos/main.css"> <!--vinculamos el css-->
 </head>
 
@@ -26,6 +27,7 @@
 
 <!-- Sección Hero -->
 <section class="hero-section">
+    <video class="hero-image" src="imagenes/HERO.mov" autoplay muted loop playsinline></video>
     <div class="hero-content">
         <div class="hero-title">Inglés en acción</div>
         <div class="hero-subtitle">Experiencias que transforman</div>
@@ -71,24 +73,25 @@
         <div class="testimonios-grid">
             <div class="testimonio-card">
                 <div class="testimonio-content">
-                    <p>"Fue un viaje inolvidable, estuvimos dos semanas en Salisbury donde conocimos distintas culturas y muchas personas además de tener la chance de recorrer lugares iconicos. Después fuimos a Londres donde recorrimos con un guía y aprendimos de toda la cultura moderna londinense.Realmente fue un viaje que jamás voy a olvidar y la organización y de dedicación de cada miembro de The bridge lo hizo mejor aún. Yo creo que el servicio que me brindó a mí y a mis compañeros no se compara ya que te cuidan desde el amor a viajar."</p>
+                    <p class="testimonio-texto">"Fue un viaje inolvidable, estuvimos dos semanas en Salisbury donde conocimos distintas culturas y muchas personas además de tener la chance de recorrer lugares iconicos. Después fuimos a Londres donde recorrimos con un guía y aprendimos de toda la cultura moderna londinense.Realmente fue un viaje que jamás voy a olvidar y la organización y de dedicación de cada miembro de The bridge lo hizo mejor aún. Yo creo que el servicio que me brindó a mí y a mis compañeros no se compara ya que te cuidan desde el amor a viajar."</p>
+                    <button class="leer-mas-btn" onclick="toggleTexto(this)">+ Leer más</button>
                 </div>
                 <div class="testimonio-author">
                     <div class="author-info">
                         <h4>Macarena Fernandez Poinsteau</h4>
-                        <span>Programa grupal Inglaterra - Julio</span>
+                        <span>Programa grupal Inglaterra</span>
                     </div>
                 </div>
             </div>
             
             <div class="testimonio-card">
                 <div class="testimonio-content">
-                    <p>"El Summer Camp en USA fue espectacular. Aprendí inglés mientras conocía una cultura completamente nueva. ¡Recomiendo 100%!"</p>
+                    <p>"Estoy en Dublín viviendo una experiencia increíble de Work and Study. Estudio inglés por las tardes y trabajo en un bar-restaurant por las mañanas, lo que me permite mantenerme y viajar por Europa durante mis vacaciones. Una oportunidad única para crecer, aprender y disfrutar al máximo."</p>
                 </div>
                 <div class="testimonio-author">
                     <div class="author-info">
-                        <h4>Carlos Rodríguez</h4>
-                        <span>Summer Camp USA</span>
+                        <h4>Juan Francisco Coa</h4>
+                        <span>Work & Study Irlanda</span>
                     </div>
                 </div>
             </div>
@@ -147,7 +150,7 @@
                 </div>
             </a>
             
-            <a href="teachers.html" class="programa-item terciario" target="_blank">
+            <a href="teachers.html" class="programa-item terciario">
                 <div class="programa-imagen">
                     <img src="imagenes/profesores.jpg" alt="Cursos de idiomas para Profesores">
                 </div>
@@ -199,5 +202,18 @@
         </div>
     </div>
 </footer>
+
+<script>
+function toggleTexto(btn) {
+    const texto = btn.previousElementSibling;
+    if (texto.classList.contains('expandido')) {
+        texto.classList.remove('expandido');
+        btn.textContent = '+ Leer más';
+    } else {
+        texto.classList.add('expandido');
+        btn.textContent = '- Leer menos';
+    }
+}
+</script>
 </body>
 </html>

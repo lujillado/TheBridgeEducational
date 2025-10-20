@@ -569,6 +569,11 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     margin-top: 3rem;
 }
 
+/* Alinear alturas y nombres al mismo nivel */
+.testimonios-grid { align-items: stretch; }
+.testimonio-card { display: flex; flex-direction: column; height: 100%; }
+.testimonio-content { flex: 1; display: flex; flex-direction: column; }
+
 .testimonio-card {
     background: white;
     padding: 2rem;
@@ -587,6 +592,35 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     color: #555;
     margin-bottom: 1.5rem;
     font-size: 1rem;
+}
+
+.testimonio-texto {
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem !important;
+}
+
+.testimonio-texto.expandido {
+    display: block;
+    -webkit-line-clamp: unset;
+}
+
+.leer-mas-btn {
+    background: none;
+    border: none;
+    color: #F4C430;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.leer-mas-btn:hover {
+    color: #f0b52a;
 }
 
 .testimonio-author {

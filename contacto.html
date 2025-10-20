@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - The Bridge Educational</title>
+    <link rel="icon" type="image/png" href="imagenes/croppedlogo.png">
     <link rel="stylesheet" href="estilos/main.css">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -79,7 +80,7 @@
             </div>
 
             <div class="form-container">
-                <h2>Dejanos tu consulta</h2>
+                <h2>Dejános tu consulta</h2>
                 <form id="contact-form" class="contact-form">
                     <div class="form-group">
                         <label for="nombre">Nombre *</label>
@@ -98,12 +99,12 @@
                     
                     <div class="form-group">
                         <label for="asunto">Asunto de consulta *</label>
-                        <input type="text" id="asunto" name="asunto" required placeholder="Ej: Consulta sobre Summer Camp USA">
+                        <input type="text" id="asunto" name="asunto" required placeholder="Ej: Consulta sobre Summer Camp UK">
                     </div>
                     
                     <div class="form-group">
                         <label for="consulta">Consulta *</label>
-                        <textarea id="consulta" name="consulta" rows="5" required placeholder="Escribe tu consulta aquí..."></textarea>
+                        <textarea id="consulta" name="consulta" rows="5" required placeholder="Escribí tu consulta acá..."></textarea>
                     </div>
                     
                     <button type="submit" class="submit-btn">
@@ -250,17 +251,22 @@
         // Validación en tiempo real
         const inputs = form.querySelectorAll('input[required], textarea[required]');
         inputs.forEach(input => {
+            input.addEventListener('invalid', function() {
+                this.setCustomValidity('Por favor llena este campo');
+            });
+            
+            input.addEventListener('input', function() {
+                this.setCustomValidity('');
+                if (this.value.trim() !== '') {
+                    this.style.borderColor = '#27ae60';
+                }
+            });
+            
             input.addEventListener('blur', function() {
                 if (this.value.trim() === '') {
                     this.style.borderColor = '#e74c3c';
                 } else {
                     this.style.borderColor = '#ddd';
-                }
-            });
-            
-            input.addEventListener('input', function() {
-                if (this.value.trim() !== '') {
-                    this.style.borderColor = '#27ae60';
                 }
             });
         });
