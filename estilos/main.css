@@ -136,25 +136,43 @@ interesante: ::marker
 /* px absoluto, lo uso para respetar proporciones
 Los relativos serian vw o porcentaje */
 
+/* ===== RESPONSIVE NAVEGACIÓN MEJORADA ===== */
+
 @media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 0;
+    }
+    
     .nav-container img {
         height: 60px;
+        align-self: center;
     }
     
     .nav-links {
-        gap: 20px;
+        gap: 25px;
         flex-wrap: wrap;
-    }
-    .social-links {
-        gap: 16px;
-        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 0;
     }
     
     .nav-links a {
         font-size: 0.9rem;
+        padding: 5px 0;
     }
-    .social-links a {
-        font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-links a {
+        font-size: 1rem;
+        padding: 8px 0;
     }
 }
 
@@ -166,12 +184,13 @@ Los relativos serian vw o porcentaje */
     .nav-links {
         gap: 15px;
     }
-    .social-links {
-        gap: 12px;
-    }
     
     nav {
-        padding: 0 10px;
+        padding: 0 15px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
     }
 
     /* Grid de una columna en móviles */
@@ -194,14 +213,13 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
 
 /* Seccion hero */
 .hero-section {
-    background-size: cover;
-    background-position: center 30%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: flex-start; /* Alinea a la izquierda */
     text-align: left; /* Alinea el texto a la izquierda */
     position: relative;
+    overflow: hidden;
 }
 
 .hero-image {
@@ -287,6 +305,102 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     margin: 0 auto;
 }
 
+/* Layout específico para teachers - 2 opciones horizontales */
+.programas-destacados.teachers-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 2rem 4rem;
+    max-width: 1000px;
+}
+
+.programas-destacados.teachers-layout .programa-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 400px;
+}
+
+.programas-destacados.teachers-layout .programa-card img {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.programas-destacados.teachers-layout .programa-card h3 {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.programas-destacados.teachers-layout .programa-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0 1rem 1.5rem 1rem;
+}
+
+/* Layout específico para juniors - 2x2 grid */
+.programas-destacados.juniors-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 2rem 3rem;
+    max-width: 1200px;
+}
+
+.programas-destacados.juniors-layout .programa-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 350px;
+}
+
+.programas-destacados.juniors-layout .programa-card img {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.programas-destacados.juniors-layout .programa-card h3 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem 0;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.3;
+    padding: 0 1rem;
+}
+
+/* Layout específico para adultos - 2 opciones horizontales */
+.programas-destacados.adultos-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 2rem 4rem;
+    max-width: 1000px;
+}
+
+.programas-destacados.adultos-layout .programa-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 400px;
+}
+
+.programas-destacados.adultos-layout .programa-card img {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.programas-destacados.adultos-layout .programa-card h3 {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem 0;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.3;
+    padding: 0 1rem;
+}
+
 .programa-card {
     background: white;
     border-radius: 12px;
@@ -321,12 +435,117 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
         gap: 1.5rem;
         padding: 3rem 1rem;
     }
+    
+    /* Responsive para teachers layout */
+    .programas-destacados.teachers-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    .programas-destacados.teachers-layout .programa-card {
+        min-height: 350px;
+    }
+    
+    .programas-destacados.teachers-layout .programa-card img {
+        height: 200px;
+    }
+    
+    /* Responsive para juniors layout */
+    .programas-destacados.juniors-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    .programas-destacados.juniors-layout .programa-card {
+        min-height: 320px;
+    }
+    
+    .programas-destacados.juniors-layout .programa-card img {
+        height: 200px;
+    }
+    
+    /* Responsive para adultos layout */
+    .programas-destacados.adultos-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    .programas-destacados.adultos-layout .programa-card {
+        min-height: 350px;
+    }
+    
+    .programas-destacados.adultos-layout .programa-card img {
+        height: 200px;
+    }
 }
 
 @media (max-width: 480px) {
     .programas-destacados {
         grid-template-columns: 1fr;
         padding: 2rem 1rem;
+    }
+    
+    .programas-destacados.teachers-layout {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .programas-destacados.teachers-layout .programa-card {
+        min-height: 300px;
+    }
+    
+    .programas-destacados.teachers-layout .programa-card img {
+        height: 180px;
+    }
+    
+    .programas-destacados.teachers-layout .programa-card h3 {
+        font-size: 1.2rem;
+        margin: 1rem 0 0.5rem 0;
+    }
+    
+    .programas-destacados.teachers-layout .programa-card p {
+        font-size: 0.9rem;
+        padding: 0 0.5rem 1rem 0.5rem;
+    }
+    
+    /* Responsive para juniors layout en móviles pequeños */
+    .programas-destacados.juniors-layout {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .programas-destacados.juniors-layout .programa-card {
+        min-height: 280px;
+    }
+    
+    .programas-destacados.juniors-layout .programa-card img {
+        height: 160px;
+    }
+    
+    .programas-destacados.juniors-layout .programa-card h3 {
+        font-size: 1rem;
+        margin: 1rem 0 0.5rem 0;
+        padding: 0 0.5rem;
+    }
+    
+    /* Responsive para adultos layout en móviles pequeños */
+    .programas-destacados.adultos-layout {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .programas-destacados.adultos-layout .programa-card {
+        min-height: 300px;
+    }
+    
+    .programas-destacados.adultos-layout .programa-card img {
+        height: 180px;
+    }
+    
+    .programas-destacados.adultos-layout .programa-card h3 {
+        font-size: 1.1rem;
+        margin: 1rem 0 0.5rem 0;
+        padding: 0 0.5rem;
     }
 }
 
@@ -782,17 +1001,93 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     color: #bbb;
 }
 
-/* Responsive - Footer */
+/* ===== RESPONSIVE FOOTER MEJORADO ===== */
+
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: center;
     }
+    
+    .footer-left {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
     .footer-right {
         display: flex;
-        gap: 16px;
+        gap: 20px;
         flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .social-links a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        padding: 0 1rem;
+        gap: 1.25rem;
+    }
+    
+    .footer-right {
+        gap: 16px;
+    }
+    
+    .social-links a {
+        font-size: 0.85rem;
+    }
+    
+    .social-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .footer-logo {
+        height: 40px;
+    }
+    
+    .footer-tagline {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        padding: 1.25rem 0 1.5rem 0;
+    }
+    
+    .footer-container {
+        gap: 1rem;
+    }
+    
+    .footer-right {
+        gap: 12px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-links a {
+        font-size: 0.8rem;
+        padding: 4px 0;
+    }
+    
+    .social-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .footer-logo {
+        height: 35px;
+    }
+    
+    .footer-tagline {
+        font-size: 0.85rem;
     }
 }
 
@@ -908,6 +1203,17 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     color: #666;
     margin: 0;
     font-size: 0.95rem;
+}
+
+/* Quitar subrayado de enlaces en contacto */
+.contact-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-item a:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Contenedor del formulario */
@@ -1552,7 +1858,10 @@ Pagina que me arma el codigo: https://grid.layoutit.com/
     .galeria-img { height: 260px; }
 }
 
-/* pagina adultos*/
-#fotosadultos {
+/* pagina salida grupal*/
+#fotosadultos , #fotosworkstudy {
     padding-bottom: 3rem;
+}
+#todos-programas{
+    margin-bottom:3rem;
 }
